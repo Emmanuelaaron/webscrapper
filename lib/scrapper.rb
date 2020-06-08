@@ -2,6 +2,7 @@ require 'Nokogiri'
 require 'HTTParty'
 require 'byebug'
 
+# Scrapper class
 class Scrapper
   def initialize(product)
     @product = product
