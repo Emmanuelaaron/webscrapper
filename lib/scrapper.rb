@@ -24,7 +24,8 @@ class Scrapper
     products.each do |product|
       my_product = {
         name: product.css('h3.name').text,
-        price: product.css('div.prc').text
+        price: product.css('div.prc').text,
+        index: @results.count + 1
       }
       @results.push(my_product)
     end
@@ -38,5 +39,9 @@ class Scrapper
 
   def my_url(page_number)
     "#{@url}/catalog/?q=#{@product}&page=#{page_number}"
+  end
+
+  def get_product(my_index)
+    @results[my_index - 1]
   end
 end
