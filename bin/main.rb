@@ -8,4 +8,4 @@ puts '---------------------------------------'
 product = gets .chomp
 my_scrapper = Scrapper.new(product)
 
-p my_scrapper.my_results
+p my_scrapper.total_results
