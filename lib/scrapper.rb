@@ -9,8 +9,8 @@ class Scrapper
     @url = 'https://www.jumia.ug/'
   end
 
-  def parser
-    unparsed_page = HTTParty.get(my_url)
+  def parser(page = '1')
+    unparsed_page = HTTParty.get(my_url(page))
     Nokogiri::HTML(unparsed_page)
   end
 
@@ -18,20 +18,24 @@ class Scrapper
     parser.css('header').css('p.-fs14').text.split(' ')[0].to_i
   end
 
-  def my_results
-    results = Array.new
-    products = parser.css('div.info')
+  def my_results(page_number = '1')
+    products = parser(page_number).css('div.info')
     products.each do |product|
       my_product = {
         name: product.css('h3.name').text,
         price: product.css('div.prc').text
       }
-      results.push(my_product)
+      @results.push(my_product)
     end
-    results
+    @results
   end
 
-  def my_url
-    @url + '/catalog/?q='+ @product
+  def number_of_pages
+    per_page = my_results.count
+    total_results / per_page
+  end
+
+  def my_url(page_number)
+    "#{@url}/catalog/?q=#{@product}&page=#{page_number}"
   end
 end
