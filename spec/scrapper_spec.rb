@@ -21,4 +21,10 @@ describe 'Scrapper' do
       expect(my_scrapper.total_results.class).to eql(100.class)
     end
   end
+
+  describe '#my_results' do
+    it 'returns an array of results' do
+      expect(my_scrapper.my_results).to be_an_instance_of(Array)
+    end
+  end
 end
