@@ -27,4 +27,10 @@ describe 'Scrapper' do
       expect(my_scrapper.my_results).to be_an_instance_of(Array)
     end
   end
+
+  describe '#get_product' do
+    it 'return a hash of a product' do
+      expect(my_scrapper.get_product(30)).to be_falsey
+    end
+  end
 end
