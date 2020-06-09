@@ -15,4 +15,10 @@ describe 'Scrapper' do
       expect(my_scrapper.my_url(1)).to eql(jumia_url)
     end
   end
+
+  describe '#total_results' do
+    it 'returns total number of results that are integers' do
+      expect(my_scrapper.total_results.class).to eql(100.class)
+    end
+  end
 end
