@@ -33,4 +33,10 @@ describe 'Scrapper' do
       expect(my_scrapper.get_product(30)).to be_falsey
     end
   end
+
+  describe '#number_of_pages' do
+    it 'returns the numbers of pages returned' do
+      expect(my_scrapper.number_of_pages.class).to eql(Integer)
+    end
+  end
 end
