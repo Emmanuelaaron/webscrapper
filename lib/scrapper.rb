@@ -1,6 +1,5 @@
-require 'Nokogiri'
-require 'HTTParty'
-require 'byebug'
+require 'nokogiri'
+require 'httParty'
 
 # Scrapper class
 class Scrapper
