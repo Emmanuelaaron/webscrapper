@@ -1,5 +1,5 @@
 require 'nokogiri'
-require 'httParty'
+require 'httparty'
 
 # Scrapper class
 class Scrapper
