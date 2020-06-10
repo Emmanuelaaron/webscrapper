@@ -1,6 +1,4 @@
-require './lib/scrapper'
-require 'Nokogiri'
-require 'HTTParty'
+require_relative '../lib/scrapper'
 
 describe 'Scrapper' do
   let(:my_scrapper) { Scrapper.new('phones') }
