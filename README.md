@@ -11,6 +11,7 @@
 - Clone this repo on your local machine
 - Open your terminal
 - cd into webscrapper folder
+- run `bundle install` command in your terminal
 - cd into bin folder
 - run `ruby main.rb` command in your terminal
 - Follow the prompts
