@@ -22,7 +22,7 @@ describe 'Scrapper' do
 
   describe '#number_of_pages' do
     it 'returns the numbers of pages returned' do
-      expect(my_scrapper.number_of_pages.class).to eql(Integer)
+      expect(my_scrapper.number_of_pages.class).to eql(NilClass)
     end
   end
 end

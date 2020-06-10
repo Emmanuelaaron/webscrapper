@@ -29,7 +29,7 @@ class Scrapper
 
   def number_of_pages
     per_page = my_results.count
-    total_results / per_page
+    return total_results / per_page if per_page == true
   end
 
   def get_product(my_index)
@@ -37,11 +37,13 @@ class Scrapper
   end
 
   private
-    def parser(page = '1')
-      unparsed_page = HTTParty.get(my_url(page))
-      Nokogiri::HTML(unparsed_page)
-    end
-    def my_url(page_number)
-      "#{@url}/catalog/?q=#{@product}&page=#{page_number}"
-    end
+
+  def parser(page = '1')
+    unparsed_page = HTTParty.get(my_url(page))
+    Nokogiri::HTML(unparsed_page)
+  end
+
+  def my_url(page_number)
+    "#{@url}/catalog/?q=#{@product}&page=#{page_number}"
+  end
 end
