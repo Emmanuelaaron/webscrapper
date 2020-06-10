@@ -10,11 +10,6 @@ class Scrapper
     @url = 'https://www.jumia.ug/'
   end
 
-  def parser(page = '1')
-    unparsed_page = HTTParty.get(my_url(page))
-    Nokogiri::HTML(unparsed_page)
-  end
-
   def total_results
     parser.css('header').css('p.-fs14').text.split(' ')[0].to_i
   end
@@ -37,11 +32,16 @@ class Scrapper
     total_results / per_page
   end
 
-  def my_url(page_number)
-    "#{@url}/catalog/?q=#{@product}&page=#{page_number}"
-  end
-
   def get_product(my_index)
     @results[my_index - 1]
   end
+
+  private
+    def parser(page = '1')
+      unparsed_page = HTTParty.get(my_url(page))
+      Nokogiri::HTML(unparsed_page)
+    end
+    def my_url(page_number)
+      "#{@url}/catalog/?q=#{@product}&page=#{page_number}"
+    end
 end
